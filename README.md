@@ -16,8 +16,5 @@ It helps demonstrate real-world interactions between users, properties, bookings
 
 ---
 
-## 🚀 Usage
-1. Make sure your database schema is already created (run your `create_tables.sql` first).
-2. Connect to your MySQL or PostgreSQL database:
 
    mysql -u root -p airbnb_db
