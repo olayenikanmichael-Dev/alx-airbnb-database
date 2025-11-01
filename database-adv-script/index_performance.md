@@ -6,7 +6,7 @@ Then measure the performance before and after indexing using `EXPLAIN` or `ANALY
 
 ---
 
-## 🧩 High-Usage Columns
+##  High-Usage Columns
 
 | Table | Column | Reason for Index |
 |--------|---------|------------------|
