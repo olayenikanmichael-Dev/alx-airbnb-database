@@ -4,6 +4,12 @@
 
 -- Retrieve all bookings along with user details, property details, and payment details
 EXPLAIN ANALYZE
+-- ============================================================
+-- STEP 1: INITIAL COMPLEX QUERY
+-- ============================================================
+
+-- Retrieve all bookings along with user, property, and payment details
+EXPLAIN ANALYZE
 SELECT 
     b.id AS booking_id,
     u.id AS user_id,
@@ -19,7 +25,10 @@ FROM bookings b
 JOIN users u ON b.user_id = u.id
 JOIN properties p ON b.property_id = p.id
 JOIN payments pay ON b.id = pay.booking_id
+WHERE b.start_date >= '2025-01-01'
+AND pay.status = 'completed'
 ORDER BY b.start_date DESC;
+
 
 
 -- ============================================================
