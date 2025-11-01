@@ -87,3 +87,33 @@ CREATE TABLE reviews (
 );
 
 
+# SQL Aggregation and Window Functions 
+
+## 📘 Objective
+Use SQL aggregation and window functions to analyze data from a property booking system.
+
+---
+
+## 🧩 Table Overview
+The queries are based on the following tables:
+
+- **Users** – stores user information.  
+- **Bookings** – tracks which user booked which property.  
+- **Properties** – lists available properties for booking.
+
+---
+
+## 🧮 1. Aggregation Query — Total Bookings per User
+
+```sql
+SELECT 
+    users.id AS user_id,
+    users.name AS user_name,
+    COUNT(bookings.id) AS total_bookings
+FROM users
+LEFT JOIN bookings 
+    ON users.id = bookings.user_id
+GROUP BY users.id, users.name
+ORDER BY total_bookings DESC;
+
+
