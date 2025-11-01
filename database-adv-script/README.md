@@ -26,6 +26,64 @@ SELECT
     bookings.start_date,
     bookings.end_date
 FROM bookings
+
+
+
 INNER JOIN users 
     ON bookings.user_id = users.id;
+
+
+    # SQL Subqueries 
+
+##  Overview part TWO 
+This file demonstrates how to use both **correlated** and **non-correlated subqueries** in SQL.  
+Subqueries help you perform advanced filtering and analysis by embedding one query inside another.
+
+---
+
+##  Database Context
+The examples are based on a simple **property booking system** with the following tables:
+
+- **Users** – stores user information.  
+- **Properties** – lists available properties.  
+- **Bookings** – tracks property bookings made by users.  
+- **Reviews** – stores property ratings and comments.
+
+---
+
+##  Sample Table Structures
+
+sql
+-- Users table
+CREATE TABLE users (
+    id INT PRIMARY KEY,
+    name VARCHAR(100)
+);
+
+-- Properties table
+CREATE TABLE properties (
+    id INT PRIMARY KEY,
+    name VARCHAR(100)
+);
+
+-- Bookings table
+CREATE TABLE bookings (
+    id INT PRIMARY KEY,
+    user_id INT,
+    property_id INT,
+    start_date DATE,
+    end_date DATE,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (property_id) REFERENCES properties(id)
+);
+
+-- Reviews table
+CREATE TABLE reviews (
+    id INT PRIMARY KEY,
+    property_id INT,
+    rating DECIMAL(2,1),
+    comment TEXT,
+    FOREIGN KEY (property_id) REFERENCES properties(id)
+);
+
 
